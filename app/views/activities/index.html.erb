@@ -1,7 +1,16 @@
 <div class="page-header">
+  <div class="page-header">
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <a href="/activities/new" class="btn btn-default btn-block"><i class="fa fa-plus" aria-hidden="true"></i> New Activity</a>
+      </div>
+    </div>
+  </div>
+
+
   <h1>
     Activities
-    <a href="/activities/new" class="btn btn-lg btn-success">New Activity</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -99,11 +108,11 @@
           <% end %>
         </td>
         <td>
-          <a href="/activities/<%= activity.id %>" class="btn btn-primary">Show</a>
-          
+          <a href="/activities/<%= activity.id %>" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
           <% if current_user == activity.contributor %>
-            <a href="/activities/<%= activity.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_activity/<%= activity.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            <a href="/activities/<%= activity.id %>/edit" class="btn btn-default"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="/delete_activity/<%= activity.id %>" class="btn btn-default" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
           <% end %>
         </td>
       </tr>
