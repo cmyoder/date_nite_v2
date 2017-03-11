@@ -1,0 +1,55 @@
+<!-- Validation failure messages -->
+<% if @activity.errors.any? %>
+  <% @activity.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Activity #<%= @activity.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_activity/<%= @activity.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for name -->
+      <div class="form-group">
+        <label for="name" class="control-label">
+          Name
+        </label>
+
+        <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @activity.name %>">
+      </div>
+
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @activity.location %>">
+      </div>
+
+      <!-- Label and input for contributor_id -->
+      <div class="form-group">
+        <label for="contributor_id" class="control-label">
+          Contributor
+        </label>
+
+        <input type="text" id="contributor_id" name="contributor_id" placeholder="Contributor" class="form-control" value="<%= @activity.contributor_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Activity
+      </button>
+      or
+      <a href="/activities/<%= @activity.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
