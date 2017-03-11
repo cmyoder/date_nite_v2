@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :activities,
+             :foreign_key => "contributor_id",
+             :dependent => :destroy
+
   has_many   :restaurants,
              :foreign_key => "contributor_id",
              :dependent => :destroy
