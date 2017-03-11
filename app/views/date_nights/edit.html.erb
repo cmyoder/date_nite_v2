@@ -33,7 +33,7 @@
           Date
         </label>
 
-        <input type="text" id="date_id" name="date_id" placeholder="Date" class="form-control" value="<%= @date_night.date_id %>">
+        <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :email, @date_night.date_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for restaurant_id -->
