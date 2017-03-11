@@ -10,7 +10,8 @@ class DateNightsController < ApplicationController
   end
 
   def index
-    @date_nights = DateNight.page(params[:page]).per(10)
+    @q = DateNight.ransack(params[:q])
+    @date_nights = @q.result(:distinct => true).includes(:user, :date, :restaurant, :activity).page(params[:page]).per(10)
 
     render("date_nights/index.html.erb")
   end
