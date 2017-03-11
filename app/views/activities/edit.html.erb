@@ -36,14 +36,8 @@
         <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @activity.location %>">
       </div>
 
-      <!-- Label and input for contributor_id -->
-      <div class="form-group">
-        <label for="contributor_id" class="control-label">
-          Contributor
-        </label>
-
-        <%= select_tag(:contributor_id, options_from_collection_for_select(User.all, :id, :email, @activity.contributor_id), :class => "form-control") %>
-      </div>
+      
+      
 
       <button class="btn btn-warning">
         Update Activity
