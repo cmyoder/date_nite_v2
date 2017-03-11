@@ -51,7 +51,7 @@
           Activity
         </label>
 
-        <input type="text" id="activity_id" name="activity_id" placeholder="Activity" class="form-control" value="<%= @date_night.activity_id %>">
+        <%= select_tag(:activity_id, options_from_collection_for_select(Activity.all, :id, :name, @date_night.activity_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for day -->
