@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h3>Date Night #<%= @date_night.id %></h3>
+  <h3>Date Night on <%= @date_night.day.to_formatted_s(:long) %></h3>
 </div>
 
 <div class="row">
@@ -42,20 +42,20 @@
       </dd>
 
       <dt>Day</dt>
-      <dd><%= @date_night.day %></dd>
+      <dd><%= @date_night.day.to_formatted_s(:long) %></dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
       <a href="/date_nights" class="btn btn-primary">
-        Back
+        <i class="fa fa-undo" aria-hidden="true"></i>
       </a>
-      <% if current_user == @date_night.user %>
+      <% if current_user == @date_night.user || @date_night.date %>
         <a href="/date_nights/<%= @date_night.id %>/edit" class="btn btn-warning">
-          Edit
+          <i class="fa fa-pencil" aria-hidden="true"></i>
         </a>
         <a href="/delete_date_night/<%= @date_night.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
+          <i class="fa fa-trash" aria-hidden="true"></i>
         </a>
       <% end %>
     </div>
