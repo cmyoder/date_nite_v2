@@ -27,7 +27,7 @@
       <dd>
         <% if @date_night.restaurant.present? %>
           <a href="/restaurants/<%= @date_night.restaurant_id %>">
-            <%= @date_night.restaurant.created_at %>
+            <%= @date_night.restaurant.name %>
           </a>
         <% end %>
       </dd>
