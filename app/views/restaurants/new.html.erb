@@ -37,13 +37,7 @@
       </div>
 
       <!-- Label and input for contributor_id -->
-      <div class="form-group">
-        <label for="contributor_id" class="control-label">
-          Contributor
-        </label>
-
-        <%= select_tag(:contributor_id, options_from_collection_for_select(User.all, :id, :email, @restaurant.contributor_id), :class => "form-control") %>
-      </div>
+      <input type="hidden" name="contributor_id" value="<%= current_user.id %>">
 
       <button class="btn btn-success">
         Create Restaurant
