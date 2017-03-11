@@ -18,8 +18,8 @@
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-      
-      
+
+
 
       <!-- Label and input for date_id -->
       <div class="form-group">
@@ -36,7 +36,7 @@
           Restaurant
         </label>
 
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :created_at, @date_night.restaurant_id), :class => "form-control") %>
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @date_night.restaurant_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for activity_id -->
