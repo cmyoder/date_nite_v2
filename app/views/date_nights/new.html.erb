@@ -27,7 +27,7 @@
           Date
         </label>
 
-        <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :email, @date_night.date_id), :class => "form-control") %>
+        <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :username, @date_night.date_id), :class => "form-control") %>
       </div>
 
       <!-- Label and input for restaurant_id -->
@@ -53,15 +53,15 @@
         <label for="day" class="control-label">
           Day
         </label>
-        <div class='input-group date' id='dayPicker'>
+        <div class='input-group date' id='day'>
         <input type="hidden" id="day" name="day" placeholder="Day" class="form-control" value="<%= @date_night.day %>">
-        
+
         </div>
       </div>
 
       <script type="text/javascript">
         $(function () {
-          $('#dayPicker').datetimepicker({
+          $('#day').datetimepicker({
             inline: true,
             sideBySide: true
           });

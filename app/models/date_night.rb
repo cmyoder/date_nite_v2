@@ -13,5 +13,6 @@ class DateNight < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  validates :date, :presence => true
+  validates :day, :presence => true, :uniqueness => {:scope => :user}
 end

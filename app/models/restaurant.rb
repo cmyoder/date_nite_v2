@@ -29,5 +29,6 @@ class Restaurant < ApplicationRecord
   # Indirect associations
 
   # Validations
-
+  validates :name, :presence => true
+  validates :location, :presence => true
 end
