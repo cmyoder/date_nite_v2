@@ -22,8 +22,11 @@
         <td><%= restaurant.contributor.email %></td>
         <td>
           <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Show</a>
-          <a href="/restaurants/<%= restaurant.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_restaurant/<%= restaurant.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == restaurant.contributor %>
+            <a href="/restaurants/<%= restaurant.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_restaurant/<%= restaurant.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
