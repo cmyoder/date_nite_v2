@@ -1,4 +1,14 @@
 class ActivitiesController < ApplicationController
+  before_action :current_user_must_be_activity_user, :only => [:edit, :update, :destroy]
+
+  def current_user_must_be_activity_user
+    activity = Activity.find(params[:id])
+
+    unless current_user == activity.contributor
+      redirect_to :back, :alert => "You are not authorized for that."
+    end
+  end
+
   def index
     @activities = Activity.all
 
