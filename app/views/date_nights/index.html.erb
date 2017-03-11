@@ -36,7 +36,7 @@
         <td>
           <% if date_night.restaurant.present? %>
             <a href="/restaurants/<%= date_night.restaurant.id %>">
-              <%= date_night.restaurant.created_at %>
+              <%= date_night.restaurant.name %>
             </a>
           <% end %>
         </td>
@@ -50,7 +50,7 @@
         <td><%= date_night.day %></td>
         <td>
           <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">Show</a>
-          
+
           <% if current_user == date_night.user %>
             <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">Edit</a>
             <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
