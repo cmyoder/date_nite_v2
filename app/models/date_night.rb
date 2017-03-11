@@ -1,0 +1,8 @@
+class DateNight < ApplicationRecord
+  # Direct associations
+
+  # Indirect associations
+
+  # Validations
+
+end

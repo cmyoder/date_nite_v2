@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Date_night resource:
+  # CREATE
+  get "/date_nights/new", :controller => "date_nights", :action => "new"
+  post "/create_date_night", :controller => "date_nights", :action => "create"
+
+  # READ
+  get "/date_nights", :controller => "date_nights", :action => "index"
+  get "/date_nights/:id", :controller => "date_nights", :action => "show"
+
+  # UPDATE
+  get "/date_nights/:id/edit", :controller => "date_nights", :action => "edit"
+  post "/update_date_night/:id", :controller => "date_nights", :action => "update"
+
+  # DELETE
+  get "/delete_date_night/:id", :controller => "date_nights", :action => "destroy"
+  #------------------------------
+
   # Routes for the Activity resource:
   # CREATE
   get "/activities/new", :controller => "activities", :action => "new"
