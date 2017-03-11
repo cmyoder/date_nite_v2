@@ -11,6 +11,11 @@ class ActivitiesController < ApplicationController
 
   def index
     @activities = Activity.all
+    @location_hash = Gmaps4rails.build_markers(@activities.where.not(:location_latitude => nil)) do |activity, marker|
+      marker.lat activity.location_latitude
+      marker.lng activity.location_longitude
+      marker.infowindow "<h5><a href='/activities/#{activity.id}'>#{activity.name}</a></h5><small>#{activity.location_formatted_address}</small>"
+    end
 
     render("activities/index.html.erb")
   end
