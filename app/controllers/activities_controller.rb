@@ -16,6 +16,7 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+    @date_night = DateNight.new
     @activity = Activity.find(params[:id])
 
     render("activities/show.html.erb")
