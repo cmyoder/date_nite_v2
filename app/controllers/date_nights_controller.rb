@@ -4,7 +4,7 @@ class DateNightsController < ApplicationController
   def current_user_must_be_date_night_user
     date_night = DateNight.find(params[:id])
 
-    unless current_user == date_night.user
+    unless current_user == date_night.user || date_night.date
       redirect_to :back, :alert => "You are not authorized for that."
     end
   end
