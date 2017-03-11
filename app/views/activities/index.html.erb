@@ -19,7 +19,7 @@
       <tr>
         <td><%= activity.name %></td>
         <td><%= activity.location %></td>
-        <td><%= activity.contributor_id %></td>
+        <td><%= activity.contributor.email %></td>
         <td>
           <a href="/activities/<%= activity.id %>" class="btn btn-primary">Show</a>
           <a href="/activities/<%= activity.id %>/edit" class="btn btn-warning">Edit</a>
