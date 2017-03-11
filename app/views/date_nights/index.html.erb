@@ -26,8 +26,11 @@
         <td><%= date_night.day %></td>
         <td>
           <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">Show</a>
-          <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          
+          <% if current_user == date_night.user %>
+            <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">Edit</a>
+            <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
