@@ -9,7 +9,7 @@
       <dd>
         <% if @date_night.user.present? %>
           <a href="/users/<%= @date_night.user_id %>">
-            <%= @date_night.user.email %>
+            <%= @date_night.user.username %>
           </a>
         <% end %>
       </dd>
@@ -18,7 +18,7 @@
       <dd>
         <% if @date_night.date.present? %>
           <a href="/users/<%= @date_night.date_id %>">
-            <%= @date_night.date.email %>
+            <%= @date_night.date.username %>
           </a>
         <% end %>
       </dd>

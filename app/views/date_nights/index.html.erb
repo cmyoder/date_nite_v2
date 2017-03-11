@@ -22,14 +22,14 @@
         <td>
           <% if date_night.user.present? %>
             <a href="/users/<%= date_night.user.id %>">
-              <%= date_night.user.email %>
+              <%= date_night.user.username %>
             </a>
           <% end %>
         </td>
         <td>
           <% if date_night.date.present? %>
             <a href="/users/<%= date_night.date.id %>">
-              <%= date_night.date.email %>
+              <%= date_night.date.username %>
             </a>
           <% end %>
         </td>
