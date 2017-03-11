@@ -42,7 +42,7 @@
           Contributor
         </label>
 
-        <input type="text" id="contributor_id" name="contributor_id" placeholder="Contributor" class="form-control" value="<%= @restaurant.contributor_id %>">
+        <%= select_tag(:contributor_id, options_from_collection_for_select(User.all, :id, :email, @restaurant.contributor_id), :class => "form-control") %>
       </div>
 
       <button class="btn btn-warning">
