@@ -16,7 +16,13 @@
       <dd><%= @restaurant.name %></dd>
 
       <dt>Contributor</dt>
-      <dd><%= @restaurant.contributor_id %></dd>
+      <dd>
+        <% if @restaurant.contributor.present? %>
+          <a href="/users/<%= @restaurant.contributor_id %>">
+            <%= @restaurant.contributor.email %>
+          </a>
+        <% end %>
+      </dd>
 
     </dl>
 

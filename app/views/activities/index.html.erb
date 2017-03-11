@@ -28,7 +28,13 @@
       <tr>
         <td><%= activity.name %></td>
         <td><%= activity.location %></td>
-        <td><%= activity.contributor.email %></td>
+        <td>
+          <% if activity.contributor.present? %>
+            <a href="/users/<%= activity.contributor.id %>">
+              <%= activity.contributor.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/activities/<%= activity.id %>" class="btn btn-primary">Show</a>
           

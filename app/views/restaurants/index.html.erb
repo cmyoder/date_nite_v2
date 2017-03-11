@@ -28,7 +28,13 @@
       <tr>
         <td><%= restaurant.location %></td>
         <td><%= restaurant.name %></td>
-        <td><%= restaurant.contributor.email %></td>
+        <td>
+          <% if restaurant.contributor.present? %>
+            <a href="/users/<%= restaurant.contributor.id %>">
+              <%= restaurant.contributor.email %>
+            </a>
+          <% end %>
+        </td>
         <td>
           <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Show</a>
           

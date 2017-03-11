@@ -6,16 +6,40 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
       <dt>User</dt>
-      <dd><%= @date_night.user_id %></dd>
+      <dd>
+        <% if @date_night.user.present? %>
+          <a href="/users/<%= @date_night.user_id %>">
+            <%= @date_night.user.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Date</dt>
-      <dd><%= @date_night.date_id %></dd>
+      <dd>
+        <% if @date_night.date.present? %>
+          <a href="/users/<%= @date_night.date_id %>">
+            <%= @date_night.date.email %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Restaurant</dt>
-      <dd><%= @date_night.restaurant_id %></dd>
+      <dd>
+        <% if @date_night.restaurant.present? %>
+          <a href="/restaurants/<%= @date_night.restaurant_id %>">
+            <%= @date_night.restaurant.created_at %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Activity</dt>
-      <dd><%= @date_night.activity_id %></dd>
+      <dd>
+        <% if @date_night.activity.present? %>
+          <a href="/activities/<%= @date_night.activity_id %>">
+            <%= @date_night.activity.name %>
+          </a>
+        <% end %>
+      </dd>
 
       <dt>Day</dt>
       <dd><%= @date_night.day %></dd>
