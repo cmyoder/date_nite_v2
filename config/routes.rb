@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root :to => "restaurants#index"
+  root :to => "date_nights#index"
   # Routes for the Date_night resource:
   # CREATE
   get "/date_nights/new", :controller => "date_nights", :action => "new"

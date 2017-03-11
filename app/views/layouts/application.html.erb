@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>DateNiteV2</title>
+  <title>Date Nite</title>
 
 
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -35,7 +35,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/" class="navbar-brand">DateNiteV2</a>
+        <a href="/" class="navbar-brand">Date Nite</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -44,15 +44,13 @@
           <li><a href="/date_nights">Date Nights</a></li>
           <li><a href="/activities">Activities</a></li>
           <li><a href="/restaurants">Restaurants</a></li>
-          <li><a href="/users">Users</a></li>
-          <li><a href="/rails/info">Sitemap</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
             <li>
               <a href="/users/edit">
-                <%= current_user.email %>
+                <%= current_user.username %>
               </a>
             </li>
 
