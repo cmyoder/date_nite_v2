@@ -1,0 +1,1 @@
+{"name":"Date Nite v2","repository":"https://github.com/cmyoder/date_nite_v2","env":{"CLOUDINARY_CLOUD_NAME":{"required":true},"CLOUDINARY_API_KEY":{"required":true},"CLOUDINARY_API_SECRET":{"required":true},"ROLLBAR_ACCESS_TOKEN":{"required":true}}}
