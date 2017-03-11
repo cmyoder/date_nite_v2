@@ -1,6 +1,8 @@
 class DateNight < ApplicationRecord
   # Direct associations
 
+  belongs_to :activity
+
   belongs_to :restaurant
 
   belongs_to :date,
