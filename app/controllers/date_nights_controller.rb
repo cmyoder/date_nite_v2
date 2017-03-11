@@ -35,7 +35,7 @@ class DateNightsController < ApplicationController
     @date_night.date_id = params[:date_id]
     @date_night.restaurant_id = params[:restaurant_id]
     @date_night.activity_id = params[:activity_id]
-    @date_night.day = params[:day]
+    @date_night.day = Chronic.parse(params[:day])
 
     save_status = @date_night.save
 

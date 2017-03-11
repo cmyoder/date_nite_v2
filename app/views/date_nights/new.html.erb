@@ -53,12 +53,20 @@
         <label for="day" class="control-label">
           Day
         </label>
-
-        <input type="text" id="day" name="day" placeholder="Day" class="form-control" value="<%= @date_night.day %>">
-        <span class="input-group-addon">
-            <span class="glyphicon glyphicon-calendar"></span>
-        </span>
+        <div class='input-group date' id='dayPicker'>
+        <input type="hidden" id="day" name="day" placeholder="Day" class="form-control" value="<%= @date_night.day %>">
+        
+        </div>
       </div>
+
+      <script type="text/javascript">
+        $(function () {
+          $('#dayPicker').datetimepicker({
+            inline: true,
+            sideBySide: true
+          });
+        });
+      </script>
 
       <button class="btn btn-success">
         Create Date Night
