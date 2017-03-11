@@ -19,7 +19,7 @@
 
       <% @date_nights.each do |date_night| %>
       <tr>
-        <td><%= date_night.user_id %></td>
+        <td><%= date_night.user.email %></td>
         <td><%= date_night.date_id %></td>
         <td><%= date_night.restaurant_id %></td>
         <td><%= date_night.activity_id %></td>
