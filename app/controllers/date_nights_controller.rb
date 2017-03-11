@@ -10,7 +10,7 @@ class DateNightsController < ApplicationController
   end
 
   def index
-    @date_nights = DateNight.all
+    @date_nights = DateNight.page(params[:page]).per(10)
 
     render("date_nights/index.html.erb")
   end
