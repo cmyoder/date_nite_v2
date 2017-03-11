@@ -1,6 +1,11 @@
 class User < ApplicationRecord
   # Direct associations
 
+  has_many   :date_night_invites,
+             :class_name => "DateNight",
+             :foreign_key => "date_id",
+             :dependent => :destroy
+
   has_many   :date_night_plans,
              :class_name => "DateNight",
              :dependent => :destroy
