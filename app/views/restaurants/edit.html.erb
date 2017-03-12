@@ -9,7 +9,7 @@
 <% end %>
 
 <div class="page-header">
-  <h3>Edit Restaurant #<%= @restaurant.id %></h3>
+  <h3>Edit <%= @restaurant.name %></h3>
 </div>
 
 <div class="row">
@@ -17,15 +17,6 @@
     <form action="/update_restaurant/<%= @restaurant.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-
-      <!-- Label and input for location -->
-      <div class="form-group">
-        <label for="location" class="control-label">
-          Location
-        </label>
-
-        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @restaurant.location %>">
-      </div>
 
       <!-- Label and input for name -->
       <div class="form-group">
@@ -36,11 +27,18 @@
         <input type="text" id="name" name="name" placeholder="Name" class="form-control" value="<%= @restaurant.name %>">
       </div>
 
-      
-      
+      <!-- Label and input for location -->
+      <div class="form-group">
+        <label for="location" class="control-label">
+          Location
+        </label>
+
+        <input type="text" id="location" name="location" placeholder="Location" class="form-control" value="<%= @restaurant.location %>">
+      </div>
+
 
       <button class="btn btn-warning">
-        Update Restaurant
+        <i class="fa fa-pencil" aria-hidden="true"></i> Update
       </button>
       or
       <a href="/restaurants/<%= @restaurant.id %>">Cancel</a>

@@ -6,6 +6,15 @@
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
 
+      <dt>Contributor</dt>
+      <dd>
+        <% if @activity.contributor.present? %>
+          <a href="/users/<%= @activity.contributor_id %>">
+            <%= @activity.contributor.username %>
+          </a>
+        <% end %>
+      </dd>
+
       <dd>
         <div>
           <div id="location_map" style="height: 480px;"></div>
@@ -61,6 +70,16 @@
       </li>
       <% end %>
       <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Create a Date Here
+      </li>
 
       <li class="list-group-item">
         <form action="/create_date_night" method="post">
@@ -76,7 +95,7 @@
               Date
             </label>
 
-            <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+            <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :username), :class => "form-control") %>
           </div>
 
           <!-- Label and input for restaurant_id -->

@@ -1,42 +1,40 @@
 <div class="page-header">
-  <h3>Restaurant #<%= @restaurant.id %></h3>
+  <h3><%= @restaurant.name %></h3>
 </div>
 
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
-      <dt>Location</dt>
+
+      <dt>Contributor</dt>
+      <dd>
+        <% if @restaurant.contributor.present? %>
+          <a href="/users/<%= @restaurant.contributor_id %>">
+            <%= @restaurant.contributor.username %>
+          </a>
+        <% end %>
+      </dd>
+
       <dd>
         <div>
           <div id="location_map" style="height: 480px;"></div>
         </div>
       </dd>
 
-      <dt>Name</dt>
-      <dd><%= @restaurant.name %></dd>
-
-      <dt>Contributor</dt>
-      <dd>
-        <% if @restaurant.contributor.present? %>
-          <a href="/users/<%= @restaurant.contributor_id %>">
-            <%= @restaurant.contributor.email %>
-          </a>
-        <% end %>
-      </dd>
 
     </dl>
 
     <div class="btn-group btn-group-justified">
-      <a href="/restaurants" class="btn btn-primary">
-        Back
+      <a href="/restaurants" class="btn btn-default">
+        <i class="fa fa-undo" aria-hidden="true"></i> Back
       </a>
       <% if current_user == @restaurant.contributor %>
-        <a href="/restaurants/<%= @restaurant.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_restaurant/<%= @restaurant.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
+      <a href="/restaurants/<%= @restaurant.id %>/edit" class="btn btn-default">
+        <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+      </a>
+      <a href="/delete_restaurant/<%= @restaurant.id %>" class="btn btn-default" rel="nofollow">
+        <i class="fa fa-trash" aria-hidden="true"></i> Delete
+      </a>
       <% end %>
     </div>
   </div>
@@ -48,20 +46,21 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Date Nights
+        Your Dates Here
       </li>
 
       <% @restaurant.date_nights.each do |date_night| %>
+      <% if current_user == date_night.user || current_user == date_night.date %>
         <li class="list-group-item">
           <a href="/date_nights/<%= date_night.id %>">
-            <%= date_night.user_id %>
+            <%= date_night.day.to_formatted_s(:short) %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+              <i class="fa fa-eye"></i>
             </a>
             <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
+              <i class="fa fa-pencil"></i>
             </a>
             <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">
               <i class="fa fa-trash-o"></i>
@@ -69,6 +68,17 @@
           </div>
         </li>
       <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+      <li class="list-group-item list-group-item-info">
+        Create a Date Here
+      </li>
 
       <li class="list-group-item">
         <form action="/create_date_night" method="post">
@@ -84,7 +94,7 @@
           Date
         </label>
 
-        <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :email), :class => "form-control") %>
+        <%= select_tag(:date_id, options_from_collection_for_select(User.all, :id, :username), :class => "form-control") %>
       </div>
 
       <!-- Label and input for restaurant_id -->
@@ -105,11 +115,23 @@
           Day
         </label>
 
-        <input type="text" id="day" name="day" placeholder="Day" class="form-control" value="">
+        <div class='input-group date' id='day'>
+          <input type="hidden" id="day" name="day" placeholder="Day" class="form-control" value="<%= @date_night.day %>">
+
+        </div>
       </div>
 
+      <script type="text/javascript">
+      $(function () {
+        $('#day').datetimepicker({
+          inline: true,
+          sideBySide: true
+        });
+      });
+      </script>
+
       <button class="btn btn-block btn-success">
-        Create Date Night
+        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Create Date
       </button>
     </form>
       </li>

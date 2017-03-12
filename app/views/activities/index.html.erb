@@ -103,7 +103,7 @@
         <td>
           <% if activity.contributor.present? %>
             <a href="/users/<%= activity.contributor.id %>">
-              <%= activity.contributor.email %>
+              <%= activity.contributor.username %>
             </a>
           <% end %>
         </td>

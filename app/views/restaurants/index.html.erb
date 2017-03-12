@@ -1,7 +1,16 @@
 <div class="page-header">
+  <div class="page-header">
+
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <a href="/restaurants/new" class="btn btn-default btn-block"><i class="fa fa-plus" aria-hidden="true"></i> New Restaurant</a>
+      </div>
+    </div>
+  </div>
+
+
   <h1>
     Restaurants
-    <a href="/restaurants/new" class="btn btn-lg btn-success">New Restaurant</a>
   </h1>
 </div><div class="row mb-1">
   <div class="col-md-12">
@@ -94,16 +103,16 @@
         <td>
           <% if restaurant.contributor.present? %>
             <a href="/users/<%= restaurant.contributor.id %>">
-              <%= restaurant.contributor.email %>
+              <%= restaurant.contributor.username %>
             </a>
           <% end %>
         </td>
         <td>
-          <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">Show</a>
-          
+          <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
           <% if current_user == restaurant.contributor %>
-            <a href="/restaurants/<%= restaurant.id %>/edit" class="btn btn-warning">Edit</a>
-            <a href="/delete_restaurant/<%= restaurant.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            <a href="/restaurants/<%= restaurant.id %>/edit" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="/delete_restaurant/<%= restaurant.id %>" class="btn btn-danger" rel="nofollow"><i class="fa fa-trash" aria-hidden="true"></i></a>
           <% end %>
         </td>
       </tr>
