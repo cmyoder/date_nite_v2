@@ -1,5 +1,8 @@
 <div class="page-header">
-  <h3>User #<%= @user.id %></h3>
+  <h3><%= @user.username %></h3>
+  <% if current_user.id == @user.id %>
+    <a href="/users/edit"><h6>Edit</h6></a>
+  <% end %>
 </div>
 
 <div class="row">
@@ -7,12 +10,6 @@
     <dl class="dl-horizontal">
       <dt>Email</dt>
       <dd><%= @user.email %></dd>
-
-      <dt>Password</dt>
-      <dd><%= @user.password %></dd>
-
-      <dt>Username</dt>
-      <dd><%= @user.username %></dd>
 
     </dl>
 
@@ -30,21 +27,21 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Restaurants
+        Restaurant Contributions
       </li>
 
       <% @user.restaurants.each do |restaurant| %>
         <li class="list-group-item">
           <a href="/restaurants/<%= restaurant.id %>">
-            <%= restaurant.created_at %>
+            <%= restaurant.name %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/restaurants/<%= restaurant.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+              <i class="fa fa-eye"></i>
             </a>
             <%if current_user == restaurant.contributor %>
               <a href="/restaurants/<%= restaurant.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-pencil"></i>
               </a>
               <a href="/delete_restaurant/<%= restaurant.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
@@ -63,7 +60,7 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Activities
+        Activity Contributions
       </li>
 
       <% @user.activities.each do |activity| %>
@@ -73,11 +70,11 @@
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/activities/<%= activity.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+              <i class="fa fa-eye"></i>
             </a>
             <%if current_user == activity.contributor %>
               <a href="/activities/<%= activity.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-pencil"></i>
               </a>
               <a href="/delete_activity/<%= activity.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
@@ -96,21 +93,22 @@
   <div class="col-md-12">
     <ul class="list-group">
       <li class="list-group-item list-group-item-info">
-        Date Night Plans
+        Date Nights
       </li>
 
       <% @user.date_night_plans.each do |date_night| %>
+      <% if current_user == date_night.user || current_user == date_night.date %>
         <li class="list-group-item">
           <a href="/date_nights/<%= date_night.id %>">
-            <%= date_night.user_id %>
+            <%= date_night.day.to_formatted_s(:short) %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+              <i class="fa fa-eye"></i>
             </a>
             <%if current_user == date_night.date %>
               <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-pencil"></i>
               </a>
               <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
@@ -119,31 +117,20 @@
           </div>
         </li>
       <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many date_night_invites -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Date Night Invites
-      </li>
-
+      <% end %>
       <% @user.date_night_invites.each do |date_night| %>
+      <% if current_user == date_night.user || current_user == date_night.date %>
         <li class="list-group-item">
           <a href="/date_nights/<%= date_night.id %>">
-            <%= date_night.user_id %>
+            <%= date_night.day.to_formatted_s(:short) %>
           </a>
           <div class="btn-group btn-group-xs pull-right">
             <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
+              <i class="fa fa-eye"></i>
             </a>
             <%if current_user == date_night.date %>
               <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-pencil"></i>
               </a>
               <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash-o"></i>
@@ -152,68 +139,10 @@
           </div>
         </li>
       <% end %>
-    </ul>
-  </div>
-</div>
-
-<!-- A User has many date_invitees -->
-
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Date Invitees
-      </li>
-
-      <% @user.date_invitees.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.email %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/users/<%= user.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
       <% end %>
     </ul>
   </div>
 </div>
 
-<!-- A User has many date_inviters -->
 
-<div class="row">
-  <div class="col-md-12">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-info">
-        Date Inviters
-      </li>
-
-      <% @user.date_inviters.each do |user| %>
-        <li class="list-group-item">
-          <a href="/users/<%= user.id %>">
-            <%= user.email %>
-          </a>
-          <div class="btn-group btn-group-xs pull-right">
-            <a href="/users/<%= user.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/users/<%= user.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_user/<%= user.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
-          </div>
-        </li>
-      <% end %>
-    </ul>
-  </div>
 </div>

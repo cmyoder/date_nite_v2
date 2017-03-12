@@ -44,12 +44,13 @@
           <li><a href="/date_nights"><i class="fa fa-calendar" aria-hidden="true"></i> Plans</a></li>
           <li><a href="/activities"><i class="fa fa-exclamation" aria-hidden="true"></i> Activities</a></li>
           <li><a href="/restaurants"><i class="fa fa-cutlery" aria-hidden="true"></i> Restaurants</a></li>
+          <li><a href="/users"><i class="fa fa-heart" aria-hidden="true"></i> Users</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if current_user.present? %>
             <li>
-              <a href="/users/edit">
+              <a href="/users/<%= current_user.id %>">
                 <i class="fa fa-user" aria-hidden="true"></i> <%= current_user.username %>
               </a>
             </li>

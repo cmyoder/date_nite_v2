@@ -19,8 +19,6 @@
       <tr>
         <th>Invite From</th>
         <th>Date</th>
-        <th>Food</th>
-        <th>Activity</th>
         <th>When</th>
         <th>Actions</th>
       </tr>
@@ -42,20 +40,7 @@
           </a>
           <% end %>
         </td>
-        <td>
-          <% if date_night.restaurant.present? %>
-          <a href="/restaurants/<%= date_night.restaurant.id %>">
-            <%= date_night.restaurant.name %>
-          </a>
-          <% end %>
-        </td>
-        <td>
-          <% if date_night.activity.present? %>
-          <a href="/activities/<%= date_night.activity.id %>">
-            <%= date_night.activity.name %>
-          </a>
-          <% end %>
-        </td>
+        
         <td><%= date_night.day.to_formatted_s(:long) %></td>
         <td>
           <a href="/date_nights/<%= date_night.id %>" class="btn btn-default"><i class="fa fa-eye" aria-hidden="true"></i></a>
