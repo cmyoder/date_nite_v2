@@ -106,7 +106,7 @@
           Activity
         </label>
 
-        <%= select_tag(:activity_id, options_from_collection_for_select(Activity.all, :id, :name), :class => "form-control") %>
+        <%= select_tag(:activity_id, options_from_collection_for_select(Activity.all, :id, :name), :class => "form-control", :include_blank => true) %>
       </div>
 
       <!-- Label and input for day -->

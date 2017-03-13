@@ -36,7 +36,7 @@
           Restaurant
         </label>
 
-        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @date_night.restaurant_id), :class => "form-control") %>
+        <%= select_tag(:restaurant_id, options_from_collection_for_select(Restaurant.all, :id, :name, @date_night.restaurant_id), :class => "form-control", :include_blank => true) %>
       </div>
 
       <!-- Label and input for activity_id -->
@@ -45,7 +45,7 @@
           Activity
         </label>
 
-        <%= select_tag(:activity_id, options_from_collection_for_select(Activity.all, :id, :name, @date_night.activity_id), :class => "form-control") %>
+        <%= select_tag(:activity_id, options_from_collection_for_select(Activity.all, :id, :name, @date_night.activity_id), :class => "form-control", :include_blank => true) %>
       </div>
 
       <!-- Label and input for day -->
