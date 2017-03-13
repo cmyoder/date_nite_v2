@@ -27,14 +27,14 @@
 
     <div class="btn-group btn-group-justified">
       <a href="/activities" class="btn btn-default">
-        <i class="fa fa-undo" aria-hidden="true"></i>
+        <i class="fa fa-undo" aria-hidden="true"></i> Back
       </a>
       <% if current_user == @activity.contributor %>
       <a href="/activities/<%= @activity.id %>/edit" class="btn btn-default">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
+        <i class="fa fa-pencil" aria-hidden="true"></i> Edit
       </a>
       <a href="/delete_activity/<%= @activity.id %>" class="btn btn-default" rel="nofollow">
-        <i class="fa fa-trash" aria-hidden="true"></i>
+        <i class="fa fa-trash" aria-hidden="true"></i> Delete
       </a>
       <% end %>
     </div>
@@ -57,13 +57,13 @@
           <%= date_night.day.to_formatted_s(:short) %>
         </a>
         <div class="btn-group btn-group-xs pull-right">
-          <a href="/date_nights/<%= date_night.id %>" class="btn btn-default">
+          <a href="/date_nights/<%= date_night.id %>" class="btn btn-primary">
             <i class="fa fa-eye"></i>
           </a>
-          <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-default">
+          <a href="/date_nights/<%= date_night.id %>/edit" class="btn btn-warning">
             <i class="fa fa-pencil"></i>
           </a>
-          <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-default" rel="nofollow">
+          <a href="/delete_date_night/<%= date_night.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
         </div>
@@ -132,7 +132,7 @@
           </script>
         </div>
 
-        <button class="btn btn-block btn-default">
+        <button class="btn btn-block btn-success">
           <i class="fa fa-calendar-plus-o" aria-hidden="true"></i> Create Date
         </button>
       </form>
